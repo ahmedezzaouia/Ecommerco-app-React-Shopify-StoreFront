@@ -8,11 +8,11 @@ const Cart = () => {
   const products = [1, 2, 3, 4, 5];
   return (
     <Container className={clasess.root}>
-      <PageTitle title="Your Cart" />
-      <Grid container spacing={2}>
+      <PageTitle title="Your Cart" subTitle="" />
+      <Grid container spacing={4}>
         {products.map(() => (
-          <Grid item xs={12} sm={3}>
-            <Product />
+          <Grid item xs={12} sm={6} md={4}>
+            <Product isCart={true} />
           </Grid>
         ))}
       </Grid>

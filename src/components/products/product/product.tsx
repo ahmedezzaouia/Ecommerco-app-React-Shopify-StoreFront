@@ -1,9 +1,42 @@
 import React from "react";
-import { Button, CardActionArea, CardActions, Typography, CardMedia, CardContent, Card } from "@mui/material";
+import UseStyle from "./styles";
 
-const product = () => {
+import {
+  Button,
+  CardActionArea,
+  CardActions,
+  Typography,
+  CardMedia,
+  CardContent,
+  Card,
+  ButtonGroup,
+} from "@mui/material";
+
+interface props {
+  isCart: boolean;
+}
+
+const product = ({ isCart = false }: props) => {
+  const clasess = UseStyle();
+  const CartComps = () => {
+    return (
+      <div className={clasess.cartComps}>
+        <ButtonGroup disableElevation variant="contained">
+          <Button sx={{ backgroundColor: "#00002C" }}>-</Button>
+          <Typography variant="h6" sx={{ padding: "0 5px" }}>
+            5
+          </Typography>
+          <Button sx={{ backgroundColor: "#00002C" }}>+</Button>
+        </ButtonGroup>
+        <Button variant="outlined" href="#contained-buttons">
+          Remove
+        </Button>
+      </div>
+    );
+  };
+
   return (
-    <Card sx={{ maxWidth: 345, borderRadius: 5 }}>
+    <Card sx={{ maxWidth: 320, borderRadius: 5 }}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -25,9 +58,13 @@ const product = () => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Add To Cart
-        </Button>
+        {isCart ? (
+          <CartComps />
+        ) : (
+          <Button size="small" color="primary">
+            Add To Cart
+          </Button>
+        )}
       </CardActions>
     </Card>
   );

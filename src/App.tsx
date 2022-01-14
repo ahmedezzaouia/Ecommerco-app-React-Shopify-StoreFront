@@ -1,8 +1,7 @@
 import React from "react";
-import { Products, Navbar, Cart } from "./components";
-import Container from "@mui/material/Container";
+import { Products, Navbar, Cart, Home, Footer } from "./components";
+import { Container, CssBaseline } from "@mui/material";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { CardTravelOutlined } from "@mui/icons-material";
 
 const App = () => {
   return (
@@ -10,9 +9,10 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Products />} />
+          <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </Container>
   );

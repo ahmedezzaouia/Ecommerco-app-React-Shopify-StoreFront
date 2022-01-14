@@ -1,24 +1,25 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { Box, Typography, Container } from "@mui/material";
+import useStyle from "./styles";
 
-interface titleProps  {
-  title: string,
-};
-const Page_title = ({ title }:titleProps) => {
-  const useStyle = makeStyles({
-    title: {
-      fontFamily: "italic",
-    },
-  });
+interface titleProps {
+  title: string;
+  subTitle: string;
+}
+const Page_title = ({ title, subTitle }: titleProps) => {
   const clasess = useStyle();
 
   return (
-    <Box sx={{ padding: "30px 0px" }}>
-      <Typography className={clasess.title} variant="h2">
+    <Container className={clasess.title} disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 8 }}>
+      <Typography component="h1" variant="h2" align="center" color="text.primary" gutterBottom>
         {title}
       </Typography>
-    </Box>
+      {subTitle && (
+        <Typography variant="h5" align="center" color="text.secondary" component="p">
+          {subTitle}
+        </Typography>
+      )}
+    </Container>
   );
 };
 
