@@ -4,9 +4,9 @@ import App from "./app";
 import { ApolloClient, InMemoryCache, ApolloProvider, gql, createHttpLink, useQuery } from "@apollo/client";
 
 const link = createHttpLink({
-  uri: "https://fourniture-store.myshopify.com/api/2022-01/graphql.json",
+  uri: process.env.REACT_APP_STORE_GRAPHQL_API,
   headers: {
-    "X-Shopify-Storefront-Access-Token": "08791563014a9dd7a4bcc0b15cc8fce8",
+    "X-Shopify-Storefront-Access-Token": process.env.REACT_APP_STORE_FRONT_KEY,
   },
 });
 
@@ -15,10 +15,8 @@ const client = new ApolloClient({
   link,
 });
 ReactDOM.render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
-  </React.StrictMode>,
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>,
   document.getElementById("root")
 );

@@ -16,7 +16,12 @@ interface props {
   isCart: boolean;
 }
 
-const product = ({ isCart = false }: props) => {
+const Product = ({ isCart = false }: props) => {
+  console.log("Product started");
+  const AddToCart = () => {
+    console.log("Add to Cart");
+  };
+
   const clasess = UseStyle();
   const CartComps = () => {
     return (
@@ -61,7 +66,7 @@ const product = ({ isCart = false }: props) => {
         {isCart ? (
           <CartComps />
         ) : (
-          <Button size="small" color="primary">
+          <Button onClick={AddToCart} size="small" color="primary">
             Add To Cart
           </Button>
         )}
@@ -70,4 +75,4 @@ const product = ({ isCart = false }: props) => {
   );
 };
 
-export default product;
+export default Product;

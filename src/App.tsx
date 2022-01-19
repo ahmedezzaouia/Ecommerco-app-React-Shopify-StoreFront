@@ -3,11 +3,12 @@ import { Products, Navbar, Cart, Home, Footer } from "./components";
 import { Container, CssBaseline } from "@mui/material";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-import CartContextProvider from "./contexts/cart";
+import GlobalContextProvider from "./contexts/globalContext";
 
-const App = () => {
+const App = React.memo(() => {
+  console.log("app start");
   return (
-    <CartContextProvider>
+    <GlobalContextProvider>
       <Container>
         <BrowserRouter>
           <Navbar />
@@ -18,8 +19,8 @@ const App = () => {
           <Footer />
         </BrowserRouter>
       </Container>
-    </CartContextProvider>
+    </GlobalContextProvider>
   );
-};
+});
 
 export default App;

@@ -4,6 +4,8 @@ import { Grid, makeStyles } from "@mui/material";
 import Pagetitle from "../pageTitle/page_title";
 
 const Products = () => {
+  console.log("Proudcts start");
+
   const products = [1, 2, 3, 4, 5, 6, 7];
   return (
     <Grid container spacing={4}>
