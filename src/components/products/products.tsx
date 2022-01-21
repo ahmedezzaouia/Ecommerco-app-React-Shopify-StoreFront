@@ -1,17 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
 import Product from "./product/product";
-import { Grid, makeStyles } from "@mui/material";
-import Pagetitle from "../pageTitle/page_title";
+import { Grid, CircularProgress } from "@mui/material";
+import { ProductsContext } from "../../contexts/productsContext";
+import { useNavigate } from "react-router-dom";
 
 const Products = () => {
   console.log("Proudcts start");
+  const navigateTo = useNavigate();
+  const { products }: any = useContext(ProductsContext);
 
-  const products = [1, 2, 3, 4, 5, 6, 7];
+  if (products.length === 0) {
+    return (
+      <div style={{ textAlign: "center" }}>
+        <CircularProgress disableShrink />;
+      </div>
+    );
+  }
   return (
     <Grid container spacing={4}>
-      {products.map(() => (
-        <Grid item xs={12} sm={6} md={4}>
-          <Product isCart={false} />
+      {products.map((product: any) => (
+        <Grid
+          onClick={() => {
+            console.log("product click");
+            navigateTo(`/product/${product.node.id}`);
+          }}
+          key={product.node.id}
+          item
+          xs={12}
+          sm={6}
+          md={4}
+        >
+          <Product product={product} />
         </Grid>
       ))}
     </Grid>

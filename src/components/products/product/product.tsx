@@ -1,5 +1,7 @@
 import React from "react";
-import UseStyle from "./styles";
+import useStyle from "./styles";
+import { createCart, addToCart } from "../../../contexts/actions/cartActions";
+import { CartContext, CartDispatch } from "../../../contexts/cartContext";
 
 import {
   Button,
@@ -13,63 +15,63 @@ import {
 } from "@mui/material";
 
 interface props {
-  isCart: boolean;
+  product: any;
 }
 
-const Product = ({ isCart = false }: props) => {
+const Product = ({ product }: props) => {
   console.log("Product started");
-  const AddToCart = () => {
-    console.log("Add to Cart");
-  };
+  const clasess = useStyle();
+  const { cart }: any = React.useContext(CartContext);
+  const { dispatch }: any = React.useContext(CartDispatch);
 
-  const clasess = UseStyle();
-  const CartComps = () => {
-    return (
-      <div className={clasess.cartComps}>
-        <ButtonGroup disableElevation variant="contained">
-          <Button sx={{ backgroundColor: "#00002C" }}>-</Button>
-          <Typography variant="h6" sx={{ padding: "0 5px" }}>
-            5
-          </Typography>
-          <Button sx={{ backgroundColor: "#00002C" }}>+</Button>
-        </ButtonGroup>
-        <Button variant="outlined" href="#contained-buttons">
-          Remove
-        </Button>
-      </div>
-    );
+  const AddToCart = async () => {
+    if (!cart.id) {
+      /* todo : if Cart is empty :
+      create cart and store key in local storage 
+      */
+      console.log("Add to Cart  <<create Cart>>");
+      const action = await createCart(product.node.variants.edges[0].node.id);
+      dispatch(action);
+      console.log("action = ", action);
+    } else {
+      /* todo : if Cart is there :
+      add item to cart
+      */
+      console.log("Add to Cart  <<add to Cart>>");
+      const action = await addToCart({
+        variantId: product.node.variants.edges[0].node.id,
+        cartId: cart.id,
+      });
+      dispatch(action);
+    }
   };
 
   return (
-    <Card sx={{ maxWidth: 320, borderRadius: 5 }}>
+    <Card className={clasess.product}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="140"
-          image="https://media.gq.com/photos/5c3e12c622b9ff10db79c13e/master/pass/Sp19_BB_Nike_Adapt_20181218_NIKE0538_Detail5.jpg"
+          sx={{ maxHeight: "190px" }}
+          image={product.node.featuredImage.url}
           alt="green iguana"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            {product.node.title}
           </Typography>
           <Typography gutterBottom variant="h6" component="div">
-            125$
+            ${product.node.variants.edges[0].node.priceV2.amount}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents
-            except Antarctica
+            {product.node.description}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        {isCart ? (
-          <CartComps />
-        ) : (
-          <Button onClick={AddToCart} size="small" color="primary">
-            Add To Cart
-          </Button>
-        )}
+        <Button onClick={AddToCart} size="small" color="primary">
+          Add To Cart
+        </Button>
       </CardActions>
     </Card>
   );

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,6 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Badge from "@mui/material/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link, useNavigate } from "react-router-dom";
+import { CartContext } from "../../contexts/cartContext";
 
 const pages = ["Products", "About", "Blog"];
 
@@ -32,7 +33,7 @@ const ResponsiveAppBar = () => {
     else navigateTo("/" + page);
     setAnchorElNav(null);
   };
-
+  const { cart }: any = React.useContext(CartContext);
   return (
     <AppBar position="static" sx={{ backgroundColor: "#00002C", borderRadius: 3 }}>
       <Container maxWidth="xl">
@@ -103,7 +104,13 @@ const ResponsiveAppBar = () => {
               </Button>
             ))}
           </Box>
-          <Badge sx={{ color: "white" }} badgeContent={1} color="primary" component={Link} to="/cart">
+          <Badge
+            sx={{ color: "white" }}
+            badgeContent={cart?.lines?.edges.length}
+            color="primary"
+            component={Link}
+            to="/cart"
+          >
             <ShoppingCartIcon />
           </Badge>
         </Toolbar>

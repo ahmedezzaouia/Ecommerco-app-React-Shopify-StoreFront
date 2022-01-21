@@ -1,25 +1,27 @@
-import React from "react";
-import { Products, Navbar, Cart, Home, Footer } from "./components";
-import { Container, CssBaseline } from "@mui/material";
+import React, { useContext } from "react";
+import { Navbar, Cart, Home, Footer, ProductPage } from "./components";
+import { Container } from "@mui/material";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-import GlobalContextProvider from "./contexts/globalContext";
+import GlobalProvider from "./contexts";
 
 const App = React.memo(() => {
   console.log("app start");
+
   return (
-    <GlobalContextProvider>
+    <GlobalProvider>
       <Container>
         <BrowserRouter>
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/product/:id" element={<ProductPage />} />
           </Routes>
           <Footer />
         </BrowserRouter>
       </Container>
-    </GlobalContextProvider>
+    </GlobalProvider>
   );
 });
 

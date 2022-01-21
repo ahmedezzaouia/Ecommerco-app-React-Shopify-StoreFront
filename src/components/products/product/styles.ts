@@ -7,5 +7,16 @@ export default makeStyles({
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  button: {},
+  product: {
+    "@media (max-width: 820px)": {
+      width: "90%",
+      borderRadius: "5px",
+    },
+  },
+  cartItem: {
+    "@media (max-width: 820px)": {
+      width: "100%",
+      borderRadius: "5px",
+    },
+  },
 });
