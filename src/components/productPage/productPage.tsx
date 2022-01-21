@@ -33,7 +33,9 @@ const ProductPage = () => {
       dispatch(action);
     }
   };
-
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       <div className="container">
@@ -45,7 +47,7 @@ const ProductPage = () => {
             <div className="product-gallery">
               <ul className="image-list">
                 <li className="image-item">
-                  <img src={product.node.featuredImage.url} />
+                  <img src={product.node.featuredImage.url} alt="" />
                 </li>
               </ul>
             </div>
@@ -67,17 +69,17 @@ const ProductPage = () => {
           </div>
           <div className="products_recommandation">
             <div className="column-xs-12 column-md-4 item">
-              <img src="https://source.unsplash.com/miziNqvJx5M" />
+              <img src="https://source.unsplash.com/miziNqvJx5M" alt="" />
               <h4>Succulent</h4>
               <p className="price">$19.99</p>
             </div>
             <div className="column-xs-12 column-md-4 item">
-              <img src="https://source.unsplash.com/2y6s0qKdGZg" />
+              <img src="https://source.unsplash.com/2y6s0qKdGZg" alt="" />
               <h4>Terranium</h4>
               <p className="price">$19.99</p>
             </div>
             <div className="column-xs-12 column-md-4 item">
-              <img src="https://source.unsplash.com/6Rs76hNbIWE" />
+              <img src="https://source.unsplash.com/6Rs76hNbIWE" alt="" />
               <h4>Cactus</h4>
               <p className="price">$19.99</p>
             </div>
