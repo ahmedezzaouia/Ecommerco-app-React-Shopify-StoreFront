@@ -19,17 +19,7 @@ const Products = () => {
   return (
     <Grid container spacing={4}>
       {products.map((product: any) => (
-        <Grid
-          onClick={() => {
-            console.log("product click");
-            navigateTo(`/product/${product.node.id}`);
-          }}
-          key={product.node.id}
-          item
-          xs={12}
-          sm={6}
-          md={4}
-        >
+        <Grid key={product.node.id} item xs={12} sm={6} md={4}>
           <Product product={product} />
         </Grid>
       ))}

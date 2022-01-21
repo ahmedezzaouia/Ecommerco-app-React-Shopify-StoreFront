@@ -30,7 +30,7 @@ const ResponsiveAppBar = () => {
 
   const handleCloseNavMenu = (page: string) => {
     if (page === "Products") navigateTo("/");
-    else navigateTo("/" + page);
+    else navigateTo("/" + page.toLowerCase());
     setAnchorElNav(null);
   };
   const { cart }: any = React.useContext(CartContext);

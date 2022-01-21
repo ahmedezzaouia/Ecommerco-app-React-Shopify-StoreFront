@@ -2,6 +2,7 @@ import React from "react";
 import useStyle from "./styles";
 import { createCart, addToCart } from "../../../contexts/actions/cartActions";
 import { CartContext, CartDispatch } from "../../../contexts/cartContext";
+import { useNavigate } from "react-router-dom";
 
 import {
   Button,
@@ -21,6 +22,8 @@ interface props {
 const Product = ({ product }: props) => {
   console.log("Product started");
   const clasess = useStyle();
+  const navigateTo = useNavigate();
+
   const { cart }: any = React.useContext(CartContext);
   const { dispatch }: any = React.useContext(CartDispatch);
 
@@ -48,7 +51,12 @@ const Product = ({ product }: props) => {
 
   return (
     <Card className={clasess.product}>
-      <CardActionArea>
+      <CardActionArea
+        onClick={() => {
+          console.log("product click");
+          navigateTo(`/product/${product.node.id}`);
+        }}
+      >
         <CardMedia
           component="img"
           height="140"

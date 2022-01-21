@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Navbar, Cart, Home, Footer, ProductPage } from "./components";
+import { Navbar, Cart, Home, Footer, ProductPage, BlogPage, AboutPage } from "./components";
 import { Container } from "@mui/material";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
@@ -17,6 +17,8 @@ const App = React.memo(() => {
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/about" element={<AboutPage />} />
           </Routes>
           <Footer />
         </BrowserRouter>

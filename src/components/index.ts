@@ -4,4 +4,7 @@ import Cart from "./cart/Cart";
 import Home from "./home/Home";
 import Footer from "./footer/Footer";
 import ProductPage from "./productPage/productPage";
-export { Products, Navbar, Cart, Home, Footer, ProductPage };
+import BlogPage from "./blogPage/blogPage";
+import AboutPage from "./aboutPage/aboutPage";
+
+export { Products, Navbar, Cart, Home, Footer, ProductPage, BlogPage, AboutPage };
