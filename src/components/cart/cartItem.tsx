@@ -57,7 +57,7 @@ const CartItem = ({ product }: props) => {
             +
           </Button>
         </ButtonGroup>
-        <Button onClick={onRemoveItem} variant="outlined" href="#contained-buttons">
+        <Button onClick={onRemoveItem} variant="outlined">
           Remove
         </Button>
       </div>
