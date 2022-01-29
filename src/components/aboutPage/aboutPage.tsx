@@ -6,8 +6,7 @@ const AboutPage = () => {
     <Container>
       <PageTitle
         title="About Page"
-        subTitle=" Quickly build an effective pricing table for your potential customers with this layout. It's built with
-    default MUI components with little customization."
+        subTitle="Quickly build an effective Shopify Storefront for your potential customers . It's built with MUI components with little customization."
       />
     </Container>
   );
