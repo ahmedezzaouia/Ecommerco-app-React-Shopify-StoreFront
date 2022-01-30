@@ -9,7 +9,7 @@ export default makeStyles({
   },
   product: {
     "@media (max-width: 820px)": {
-      width: "90%",
+      width: "100%",
       borderRadius: "5px",
     },
   },

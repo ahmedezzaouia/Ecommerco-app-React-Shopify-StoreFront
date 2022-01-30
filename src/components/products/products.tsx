@@ -2,11 +2,9 @@ import React, { useContext } from "react";
 import Product from "./product/product";
 import { Grid, CircularProgress } from "@mui/material";
 import { ProductsContext } from "../../contexts/productsContext";
-import { useNavigate } from "react-router-dom";
 
 const Products = () => {
   console.log("Proudcts start");
-  const navigateTo = useNavigate();
   const { products }: any = useContext(ProductsContext);
 
   if (products.length === 0) {
