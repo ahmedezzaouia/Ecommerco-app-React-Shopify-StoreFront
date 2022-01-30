@@ -6,6 +6,7 @@ import { ProductsDispatch } from "../../contexts/productsContext";
 import { CartDispatch } from "../../contexts/cartContext";
 import { fetchProducts } from "../../contexts/actions/productsActions";
 import { fetchCart } from "../../contexts/actions/cartActions";
+import Carousel from "../carousel/carousel";
 
 const Home = () => {
   console.log("Home start");
@@ -24,16 +25,19 @@ const Home = () => {
       console.log("hey cartid ");
       fetchCart(cartId).then((action) => dispatchToCart(action));
     }
-  }, []);
+  }, [dispatchToProducts, dispatchToCart]);
 
   return (
-    <div className={classes.prodcuts}>
-      <PageTitle
-        title="Beautiful Products"
-        subTitle="Quickly build an effective Shopify Storefront for your potential customers . It's built with MUI components with little customization."
-      />
+    <div>
+      <Carousel />
+      <div className={classes.prodcuts}>
+        <PageTitle
+          title="Beautiful Products"
+          subTitle="Quickly build an effective Shopify Storefront for your potential customers . It's built with MUI components with little customization."
+        />
 
-      <Products />
+        <Products />
+      </div>
     </div>
   );
 };
